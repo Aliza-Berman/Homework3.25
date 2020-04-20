@@ -1,0 +1,15 @@
+﻿<div class="row">
+    <div class="col-md-12 col-md-offset-6 well">
+        <form method="post" action="/admin/submitBlog">
+            <input type="text" class="form-control" placeholder="Title" name="title" id="title" />
+            <br />
+            <textarea class="form-control" placeholder="What's on your mind?" name="post" id="post" rows="20"></textarea>
+            <br />
+            <button disabled class="btn btn-primary" id="submit-button">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/js/add-post.js"></script>
+}

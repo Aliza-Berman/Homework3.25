@@ -1,0 +1,44 @@
+﻿@model HomeViewModel;
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+            <h1 class="page-header">
+                Aliza Berman's Blog
+                <h2><small>Don't waste your time reading this!</small></h2>
+            </h1>
+
+            @foreach (Post post in Model.Posts)
+            {
+                <h2>
+                    <a href="/home/post?id=@post.Id">@post.Title</a>
+                </h2>
+                <p class="lead">
+                    by Aliza Berman
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> @post.DateSubmitted.ToLongDateString()</p>
+
+                <p>>@(post.BlogContent.Length < 200 ? post.BlogContent : post.BlogContent.Substring(0, 200) + "...")</p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                <hr>
+            }
+
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </footer>
+

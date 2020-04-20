@@ -1,0 +1,81 @@
+﻿@model PostViewModel;
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Blog Post -->
+                <!-- Title -->
+                <h1>@Model.Post.Title</h1>
+
+                <hr>
+
+                <!-- Date/Time -->
+                <p>
+                    <span class="glyphicon glyphicon-time"></span> Posted on @Model.Post.DateSubmitted.ToLongDateString()/p>
+
+                    <!-- Post Content -->
+                <p class="lead">
+                    @foreach (string paragraph in @Model.Post.BlogContent.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                    <p>@paragraph</p>
+                }
+                    </p>
+
+                    <hr>
+
+                    <!-- Blog Comments -->
+                    <!-- Comments Form -->
+                    <div class="well">
+                        <h4>Leave a Comment:</h4>
+                        <form role="form">
+                            <input id="name" type="text" placeholder="Name" class="form-control" name="name" value="@Model.CommenterName" />
+                            <br />
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+                    <hr>
+                    @foreach (Comment comment in Model.Comments)
+                    {
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    @comment.Name
+                                    <small>@comment.DateSubmitted.ToLongDateString() @comment.DateSubmitted.ToShortTimeString()</small>
+                                </h4>
+                                @comment.CommentContent
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+                @section scripts {
+                    <script src="/js/post.js"></script>
+                }
+
+                <!-- /.row -->
+
+                <hr>
+
+                <!-- Footer -->
+                <footer>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p>Copyright &copy; Your Website 2014</p>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </footer>
+
+            </div>
+  </div>
+   
